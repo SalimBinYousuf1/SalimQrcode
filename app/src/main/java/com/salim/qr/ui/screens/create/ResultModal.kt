@@ -57,6 +57,8 @@ import androidx.compose.ui.unit.sp
 import androidx.print.PrintHelper
 import com.salim.qr.R
 import com.salim.qr.domain.encoding.BarcodeEncoder
+import com.salim.qr.domain.encoding.EyeShape
+import com.salim.qr.domain.encoding.ModuleShape
 import com.salim.qr.domain.encoding.QrStyle
 import com.salim.qr.domain.encoding.ScannabilityChecker
 import com.salim.qr.domain.export.CodeExporter
@@ -77,7 +79,15 @@ fun ResultModal(
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
-    var qrStyle by remember { mutableStateOf(QrStyle()) }
+    var qrStyle by remember {
+        mutableStateOf(
+            QrStyle(
+                foregroundColor = 0xFF5B67EA.toInt(),
+                moduleShape = ModuleShape.ROUNDED,
+                eyeShape = EyeShape.ROUNDED
+            )
+        )
+    }
     var qrBitmap by remember { mutableStateOf<Bitmap?>(null) }
     var showStyleDialog by remember { mutableStateOf(false) }
     var isFavorite by remember { mutableStateOf(false) }
@@ -301,35 +311,34 @@ private fun ResultActionButton(
     onClick: () -> Unit,
     testTag: String
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.clickable(onClick = onClick).testTag(testTag)
+    GlassCard(
+        modifier = Modifier
+            .size(width = 76.dp, height = 70.dp)
+            .clickable(onClick = onClick)
+            .testTag(testTag),
+        cornerRadius = 18.dp,
+        elevation = 4.dp
     ) {
-        GlassCard(
-            modifier = Modifier.size(DesignSpec.ResultActionButtonSize),
-            cornerRadius = DesignSpec.ResultActionButtonSize / 2,
-            elevation = 4.dp
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = label,
-                    tint = SalimIndigo,
-                    modifier = Modifier.size(22.dp)
-                )
-            }
+            Icon(
+                imageVector = icon,
+                contentDescription = label,
+                tint = SalimIndigo,
+                modifier = Modifier.size(22.dp)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = label,
+                fontFamily = PoppinsFontFamily,
+                fontWeight = FontWeight.Medium,
+                fontSize = 11.sp,
+                color = SalimNavy
+            )
         }
-        Spacer(modifier = Modifier.height(6.dp))
-        Text(
-            text = label,
-            fontFamily = PoppinsFontFamily,
-            fontWeight = FontWeight.Medium,
-            fontSize = 11.sp,
-            color = SalimNavy
-        )
     }
 }
 

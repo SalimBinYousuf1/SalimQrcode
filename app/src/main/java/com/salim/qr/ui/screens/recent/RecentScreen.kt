@@ -101,18 +101,27 @@ fun RecentScreen(
     val snackbarHostState = remember { SnackbarHostState() }
 
     var selectedFilter by remember { mutableStateOf("all") } // "all", "scanned", "created"
+    var selectedTypeFilter by remember { mutableStateOf<String?>(null) }
     var searchQuery by remember { mutableStateOf("") }
     var selectedItemForDetail by remember { mutableStateOf<CodeRecord?>(null) }
     var selectedRecordIds by remember { mutableStateOf(setOf<Long>()) }
 
     val isMultiSelect = selectedRecordIds.isNotEmpty()
 
-    val records by when {
+    val rawRecords by when {
         searchQuery.isNotBlank() -> db.codeRecordDao().searchFlow(searchQuery)
         selectedFilter == "scanned" -> db.codeRecordDao().getByOriginFlow("scanned")
         selectedFilter == "created" -> db.codeRecordDao().getByOriginFlow("created")
         else -> db.codeRecordDao().getAllFlow()
     }.collectAsState(initial = emptyList())
+
+    val records = remember(rawRecords, selectedTypeFilter) {
+        if (selectedTypeFilter != null) {
+            rawRecords.filter { it.parsedType.equals(selectedTypeFilter, ignoreCase = true) }
+        } else {
+            rawRecords
+        }
+    }
 
     SalimBackground {
         Scaffold(
@@ -244,32 +253,59 @@ fun RecentScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(18.dp))
 
-                    // Title: "Recent" in indigo and "QR codes" in navy
-                    Row(
-                        modifier = Modifier.padding(horizontal = DesignSpec.PageMarginOnboarding),
-                        verticalAlignment = Alignment.CenterVertically
+                    // Title: "Recent Website \n QR code" (or "Recent \n QR codes")
+                    Column(
+                        modifier = Modifier.padding(horizontal = DesignSpec.PageMarginOnboarding)
                     ) {
-                        Text(
-                            text = stringResource(R.string.recent_title_unfiltered_prefix) + " ",
-                            fontFamily = PoppinsFontFamily,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 28.sp,
-                            color = SalimIndigo
-                        )
-                        Text(
-                            text = stringResource(R.string.recent_title_unfiltered_suffix),
-                            fontFamily = PoppinsFontFamily,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 28.sp,
-                            color = SalimNavy
-                        )
+                        if (selectedTypeFilter != null) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text = "Recent ",
+                                    fontFamily = PoppinsFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 28.sp,
+                                    color = SalimNavy
+                                )
+                                Text(
+                                    text = selectedTypeFilter!!,
+                                    fontFamily = PoppinsFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 28.sp,
+                                    color = SalimIndigo
+                                )
+                            }
+                            Text(
+                                text = stringResource(R.string.recent_title_filtered_suffix),
+                                fontFamily = PoppinsFontFamily,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 28.sp,
+                                color = SalimNavy
+                            )
+                        } else {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text = stringResource(R.string.recent_title_unfiltered_prefix) + " ",
+                                    fontFamily = PoppinsFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 28.sp,
+                                    color = SalimIndigo
+                                )
+                                Text(
+                                    text = stringResource(R.string.recent_title_unfiltered_suffix),
+                                    fontFamily = PoppinsFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 28.sp,
+                                    color = SalimNavy
+                                )
+                            }
+                        }
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(14.dp))
 
-                    // Segmented Control (All, Scanned, Created)
+                    // Segmented Control (All, Scanned, Created) & Type Filter chips
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -291,6 +327,59 @@ fun RecentScreen(
                             isSelected = selectedFilter == "created",
                             onClick = { selectedFilter = "created" }
                         )
+                    }
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    // Type filter chips (All, Website, Text, Wifi, SMS, Email, etc.)
+                    androidx.compose.foundation.lazy.LazyRow(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = DesignSpec.PageMarginContent),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        item {
+                            FilterPill(
+                                label = "All Types",
+                                isSelected = selectedTypeFilter == null,
+                                onClick = { selectedTypeFilter = null }
+                            )
+                        }
+                        item {
+                            FilterPill(
+                                label = "Website",
+                                isSelected = selectedTypeFilter == "Website",
+                                onClick = { selectedTypeFilter = if (selectedTypeFilter == "Website") null else "Website" }
+                            )
+                        }
+                        item {
+                            FilterPill(
+                                label = "Text",
+                                isSelected = selectedTypeFilter == "Text",
+                                onClick = { selectedTypeFilter = if (selectedTypeFilter == "Text") null else "Text" }
+                            )
+                        }
+                        item {
+                            FilterPill(
+                                label = "Wifi",
+                                isSelected = selectedTypeFilter == "Wifi",
+                                onClick = { selectedTypeFilter = if (selectedTypeFilter == "Wifi") null else "Wifi" }
+                            )
+                        }
+                        item {
+                            FilterPill(
+                                label = "Email",
+                                isSelected = selectedTypeFilter == "Email",
+                                onClick = { selectedTypeFilter = if (selectedTypeFilter == "Email") null else "Email" }
+                            )
+                        }
+                        item {
+                            FilterPill(
+                                label = "SMS",
+                                isSelected = selectedTypeFilter == "SMS",
+                                onClick = { selectedTypeFilter = if (selectedTypeFilter == "SMS") null else "SMS" }
+                            )
+                        }
                     }
 
                     Spacer(modifier = Modifier.height(14.dp))

@@ -16,4 +16,11 @@
 - **Automated Test Suite:** Ran `./gradlew testDebugUnitTest`. All unit and Robolectric tests executed successfully (100% pass rate).
 - **Prohibited Token Scan:** Automated grep on `app/` returned zero matches for prohibited keywords.
 - **Visual & Layout Inspection:** Verified exact alignment with design specifications (Wordmark, 44dp glass back button, 52dp camera flip, 232dp scan frame with 29dp corner brackets and sweeping scan line, 76dp destination cards with glossy gradient tiles, 340dp result modal, 69dp history cards with swipe-to-delete red trash button and undo, and floating 64dp glass bottom bar).
-- **Status:** Clean. All 3 passes completed with zero remaining findings.
+- **Status:** Clean.
+
+## Pass 4
+- **UI Exactness to Reference Images:** Refined Onboarding Screen 2 canvas QR illustration with finder patterns and glowing scan laser beam matching `Screenshot_20261029_232130.jpg`.
+- **Result Modal Button & Color Polish:** Updated Share and Save action buttons into unified squircle glass cards with icons and text inside matching `Screenshot_20261029_232146.jpg`, with signature indigo/violet QR foreground tint and rounded module styling.
+- **Recent Screen Category Filtering:** Added type filter pills and dynamic header ("Recent Website \n QR code") matching `Screenshot_20261029_232204.jpg`.
+- **Build & Test Verification:** `compile_applet` passed and `gradle :app:testDebugUnitTest` executed 33 tasks cleanly with 100% test success.
+- **Status:** Clean and complete. Zero issues remaining.

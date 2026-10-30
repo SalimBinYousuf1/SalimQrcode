@@ -226,58 +226,136 @@ private fun OnboardingPageOne() {
 @Composable
 private fun OnboardingPageTwo() {
     Box(modifier = Modifier.fillMaxSize()) {
-        // Large pale-blue QR graphic in top left crossed by scan band
-        Canvas(
+        // Large pale-blue QR graphic with glowing scan band in upper screen
+        Box(
             modifier = Modifier
-                .size(240.dp)
-                .offset(x = (-30).dp, y = 30.dp)
+                .align(Alignment.TopCenter)
+                .padding(top = 50.dp)
+                .size(240.dp),
+            contentAlignment = Alignment.Center
         ) {
-            val color = Color(0xFFC5D4F6)
-            val strokeWidth = 6f
-            val module = size.width / 8f
+            Canvas(modifier = Modifier.fillMaxSize()) {
+                val color = Color(0xFFC5D4F6)
+                val strokeWidth = 8f
+                val module = size.width / 8f
+                val corner = CornerRadius(16f, 16f)
+                val innerCorner = CornerRadius(8f, 8f)
 
-            drawRoundRect(
-                color = color,
-                topLeft = Offset(40f, 40f),
-                size = Size(module * 3f, module * 3f),
-                cornerRadius = CornerRadius(16f, 16f),
-                style = Stroke(width = strokeWidth)
-            )
-            drawRoundRect(
-                color = color,
-                topLeft = Offset(40f + module * 0.75f, 40f + module * 0.75f),
-                size = Size(module * 1.5f, module * 1.5f),
-                cornerRadius = CornerRadius(8f, 8f)
-            )
-            drawRoundRect(
-                color = color,
-                topLeft = Offset(module * 4.5f, 50f),
-                size = Size(module * 2.5f, module * 2f),
-                cornerRadius = CornerRadius(8f, 8f)
-            )
-            drawRoundRect(
-                color = color,
-                topLeft = Offset(60f, module * 4.5f),
-                size = Size(module * 2.5f, module * 2.5f),
-                cornerRadius = CornerRadius(12f, 12f)
-            )
+                // Top-left finder eye
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 0.4f, module * 0.4f),
+                    size = Size(module * 2.8f, module * 2.8f),
+                    cornerRadius = corner,
+                    style = Stroke(width = strokeWidth)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 1.05f, module * 1.05f),
+                    size = Size(module * 1.5f, module * 1.5f),
+                    cornerRadius = innerCorner
+                )
 
-            // Translucent purple-indigo scan band crossing through
-            drawRoundRect(
-                brush = Brush.horizontalGradient(
-                    listOf(Color(0x006B73F0), Color(0xCC7C6CF5), Color(0x006B73F0))
-                ),
-                topLeft = Offset(0f, size.height * 0.45f),
-                size = Size(size.width, 24f),
-                cornerRadius = CornerRadius(12f, 12f)
-            )
+                // Top-right finder eye
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 4.8f, module * 0.4f),
+                    size = Size(module * 2.8f, module * 2.8f),
+                    cornerRadius = corner,
+                    style = Stroke(width = strokeWidth)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 5.45f, module * 1.05f),
+                    size = Size(module * 1.5f, module * 1.5f),
+                    cornerRadius = innerCorner
+                )
+
+                // Bottom-left finder eye
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 0.4f, module * 4.8f),
+                    size = Size(module * 2.8f, module * 2.8f),
+                    cornerRadius = corner,
+                    style = Stroke(width = strokeWidth)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 1.05f, module * 5.45f),
+                    size = Size(module * 1.5f, module * 1.5f),
+                    cornerRadius = innerCorner
+                )
+
+                // Data module blocks
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 3.6f, module * 1.1f),
+                    size = Size(module * 0.8f, module * 1.4f),
+                    cornerRadius = CornerRadius(6f, 6f)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 1.1f, module * 3.6f),
+                    size = Size(module * 1.4f, module * 0.8f),
+                    cornerRadius = CornerRadius(6f, 6f)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 3.4f, module * 3.4f),
+                    size = Size(module * 1.4f, module * 1.4f),
+                    cornerRadius = CornerRadius(6f, 6f)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 5.2f, module * 3.8f),
+                    size = Size(module * 1.6f, module * 1.0f),
+                    cornerRadius = CornerRadius(6f, 6f)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 3.8f, module * 5.4f),
+                    size = Size(module * 1.0f, module * 1.8f),
+                    cornerRadius = CornerRadius(6f, 6f)
+                )
+                drawRoundRect(
+                    color = color,
+                    topLeft = Offset(module * 5.6f, module * 5.6f),
+                    size = Size(module * 1.6f, module * 1.6f),
+                    cornerRadius = CornerRadius(8f, 8f)
+                )
+
+                // Translucent purple-indigo scan band crossing through
+                drawRoundRect(
+                    brush = Brush.horizontalGradient(
+                        listOf(
+                            Color(0x006B73F0),
+                            Color(0x557C6CF5),
+                            Color(0xEE7C6CF5),
+                            Color(0x557C6CF5),
+                            Color(0x006B73F0)
+                        )
+                    ),
+                    topLeft = Offset(-16f, size.height * 0.44f),
+                    size = Size(size.width + 32f, 26f),
+                    cornerRadius = CornerRadius(13f, 13f)
+                )
+                // Center laser highlight
+                drawRoundRect(
+                    brush = Brush.horizontalGradient(
+                        listOf(Color(0x00FFFFFF), Color(0xDDFFFFFF), Color(0x00FFFFFF))
+                    ),
+                    topLeft = Offset(size.width * 0.1f, size.height * 0.44f + 10f),
+                    size = Size(size.width * 0.8f, 5f),
+                    cornerRadius = CornerRadius(2.5f, 2.5f)
+                )
+            }
         }
 
         Column(
             modifier = Modifier
                 .padding(horizontal = DesignSpec.PageMarginOnboarding)
-                .align(Alignment.CenterStart)
-                .offset(y = 60.dp)
+                .align(Alignment.BottomStart)
+                .padding(bottom = 136.dp)
         ) {
             Text(
                 text = stringResource(R.string.onboarding_title_2),
