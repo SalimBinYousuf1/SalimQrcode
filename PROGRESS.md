@@ -1,0 +1,50 @@
+# Implementation Progress
+
+- [x] **0. Setup & Project Identity**
+  - [x] Application ID, namespace, and package set to `com.salim.qr`
+  - [x] Product name set to "Salim" everywhere
+  - [x] Zero references to prohibited placeholder terms (`com.example`, `example`, `MrQR`, `TODO`, `FIXME`, lorem ipsum)
+  - [x] Offline and private configuration (No INTERNET permission)
+- [x] **1. Project Dependencies & Build Configuration**
+  - [x] CameraX, ML Kit Barcode Scanning, ZXing Core, Room, DataStore, Biometric, Coil
+  - [x] ProGuard rules and release build readiness
+  - [x] Clean Manifest with minimal scoped permissions
+- [x] **2. Brand & Design System Tokens**
+  - [x] Local Poppins font bundled in `res/font/poppins.ttf`
+  - [x] Color tokens (Indigo `#5B6CF0`, Navy `#1E2347`, Body `#6F7391`, Gradients, Type tints)
+  - [x] Soft full-bleed background gradient
+  - [x] Glassmorphism components (Cards, Buttons, Floating tab bar)
+  - [x] `DesignSpec.kt` single source of truth for exact dimensions
+- [x] **3. Exact Visual Specification**
+  - [x] 3.1 Global elements: QR watermark, glass back button, floating bottom tab bar, primary pill button
+  - [x] 3.2 App icon & Splash screen with squircle gradient and scan brackets
+  - [x] 3.3 Onboarding: 3 pages with real copy, 3D illustrations, bottom dock button with dash+dots
+  - [x] 3.4 Scan QR screen: Wordmark, flip camera, scan frame (232x232dp) with sweeping scan line, torch/gallery/zoom buttons
+  - [x] 3.5 Create QR "Choose your destination": List of 11 destination types with glossy gradient tiles
+  - [x] 3.6 Create forms: Type-specific input fields, live validation, auto-prefix, generate button
+  - [x] 3.7 Result modal: "Here's your code!" glass modal, real QR/Barcode bitmap, Share, Save, Copy, Print, Customize
+  - [x] 3.8 Recent history: Filtered/unfiltered titles, segmented control, search, glass cards, swipe-to-delete with red trash button and Undo
+  - [x] 3.9 Scan result & detail sheet: Parsed fields, safety warning banner for suspicious links, direct action intents
+  - [x] 3.10 Settings: Grouped glass cards for General, Scan, Create, History, Privacy & Security, About
+- [x] **4. Navigation & Intents**
+  - [x] Compose Navigation with 4 tab destinations
+  - [x] Back stack handling with BackHandler
+  - [x] Share target intents for text and image scanning
+- [x] **5. Scanning, Encoding, and Safety**
+  - [x] CameraX live analysis + ML Kit & ZXing fallback
+  - [x] Image decoder from gallery
+  - [x] Local link safety engine (HTTPS, IP address, shorteners, blocked schemes)
+  - [x] ZXing encoding for QR and 1D/2D barcodes
+  - [x] Scannability self-check
+  - [x] Export to PNG, JPEG, SVG, PDF and MediaStore save
+- [x] **6. Layout Safety & Responsiveness**
+  - [x] WindowInsets handling and safe padding
+  - [x] Max width container (560dp) for expanded screens
+- [x] **7. Settings & Persistence**
+  - [x] DataStore preferences for all configuration toggles
+  - [x] Biometric authentication lock
+  - [x] Retention cleanup and CSV/JSON export
+- [x] **8. Quality & Verification**
+  - [x] Room database with CodeRecord entity and DAO
+  - [x] Unit and Robolectric tests for round-trips and safety
+  - [x] Verification with compile_applet

@@ -1,0 +1,178 @@
+<resources>
+    <string name="app_name">Salim</string>
+    <string name="brand_salim">Salim</string>
+    <string name="brand_qr">QR</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_create">Create QR</string>
+    <string name="tab_scan">Scan QR</string>
+    <string name="tab_recent">Recent</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_title_1">Create your\nown QR Code</string>
+    <string name="onboarding_body_1">Design and generate custom QR codes and barcodes for websites, text, Wi-Fi networks, and more.</string>
+    <string name="onboarding_dock_1">Explore more</string>
+
+    <string name="onboarding_title_2">Scan\nQR Code</string>
+    <string name="onboarding_body_2">Quickly scan and decode QR codes and barcodes with fast, private, on-device intelligence.</string>
+    <string name="onboarding_dock_2">Next</string>
+
+    <string name="onboarding_title_3">Review\nand Manage</string>
+    <string name="onboarding_body_3">Keep track of your scans and created codes in an organized, searchable history saved locally on your device.</string>
+    <string name="onboarding_dock_3">Get Started</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_title">Scan QR Code</string>
+    <string name="scan_subtitle">Position the QR code within the frame.</string>
+    <string name="scan_action_flip">Flip Camera</string>
+    <string name="scan_action_torch">Torch</string>
+    <string name="scan_action_gallery">Gallery</string>
+    <string name="scan_action_zoom">Zoom</string>
+    <string name="scan_perm_title">Camera access required</string>
+    <string name="scan_perm_desc">Salim scans codes entirely on-device without an internet connection. Please grant camera permission to scan live codes.</string>
+    <string name="scan_perm_button">Allow camera</string>
+    <string name="scan_camera_unavailable">Camera is currently unavailable.</string>
+    <string name="scan_low_light">Low light detected. Try turning on the torch.</string>
+    <string name="scan_batch_mode">Batch Mode</string>
+    <string name="scan_continuous_mode">Continuous</string>
+
+    <!-- Create Screen -->
+    <string name="create_title_choose">Choose</string>
+    <string name="create_title_destination">your Destination!</string>
+    <string name="create_make_my_code">Make my code</string>
+    <string name="create_scan_to">scan to</string>
+    <string name="create_auto_hint">Your QR Code will be generated automatically.</string>
+    <string name="create_button_generate">Generate QR Code</string>
+
+    <!-- Destination Types -->
+    <string name="type_website">Website</string>
+    <string name="type_text">Text</string>
+    <string name="type_email">Email</string>
+    <string name="type_sms">SMS</string>
+    <string name="type_wifi">Wifi</string>
+    <string name="type_phone">Phone</string>
+    <string name="type_contact">Contact</string>
+    <string name="type_location">Location</string>
+    <string name="type_event">Event</string>
+    <string name="type_payment">Payment</string>
+    <string name="type_barcode">Barcode</string>
+
+    <!-- Form Fields -->
+    <string name="field_website_url">Enter your website url</string>
+    <string name="field_text_content">Enter text message</string>
+    <string name="field_email_address">Recipient email address</string>
+    <string name="field_email_subject">Subject</string>
+    <string name="field_email_body">Email message</string>
+    <string name="field_sms_number">Recipient phone number</string>
+    <string name="field_sms_message">SMS message text</string>
+    <string name="field_wifi_ssid">Network name (SSID)</string>
+    <string name="field_wifi_password">Network password</string>
+    <string name="field_wifi_security">Security type</string>
+    <string name="field_wifi_hidden">Hidden network</string>
+    <string name="field_phone_number">Phone number</string>
+    <string name="field_contact_name">Full name</string>
+    <string name="field_contact_phone">Phone number</string>
+    <string name="field_contact_email">Email</string>
+    <string name="field_contact_org">Organization</string>
+    <string name="field_location_lat">Latitude</string>
+    <string name="field_location_lon">Longitude</string>
+    <string name="field_event_title">Event title</string>
+    <string name="field_event_location">Location</string>
+    <string name="field_event_start">Start date &amp; time</string>
+    <string name="field_event_end">End date &amp; time</string>
+    <string name="field_payment_vpa">UPI ID / Payment address</string>
+    <string name="field_payment_name">Payee name</string>
+    <string name="field_payment_amount">Amount</string>
+    <string name="field_payment_note">Payment note</string>
+    <string name="field_barcode_data">Barcode value</string>
+    <string name="field_barcode_format">Barcode format</string>
+
+    <!-- Result Modal -->
+    <string name="result_modal_title">Here\'s your code!</string>
+    <string name="result_modal_subtitle">This is your unique QR code for another person to scan.</string>
+    <string name="action_share">Share</string>
+    <string name="action_save">Save</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_copy_image">Copy image</string>
+    <string name="action_print">Print</string>
+    <string name="action_customize">Customize</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="action_open">Open</string>
+    <string name="toast_saved">Saved to device gallery.</string>
+    <string name="toast_copied">Copied to clipboard.</string>
+
+    <!-- Recent History -->
+    <string name="recent_title_unfiltered_prefix">Recent</string>
+    <string name="recent_title_unfiltered_suffix">QR codes</string>
+    <string name="recent_title_filtered_suffix">QR code</string>
+    <string name="filter_all">All</string>
+    <string name="filter_scanned">Scanned</string>
+    <string name="filter_created">Created</string>
+    <string name="search_hint">Search code history...</string>
+    <string name="history_empty_title">No codes saved</string>
+    <string name="history_empty_desc">Scanned codes and generated codes will appear here automatically.</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_undo">Undo</string>
+    <string name="item_deleted">Code removed from history.</string>
+    <string name="clear_history_confirm">Clear all history records?</string>
+
+    <!-- Safety & Details -->
+    <string name="safety_unsecured_title">Caution: Unencrypted link</string>
+    <string name="safety_unsecured_desc">This link does not use HTTPS. Information you enter on this site may be visible to others.</string>
+    <string name="safety_suspicious_title">Suspicious link format</string>
+    <string name="safety_suspicious_desc">This URL uses an IP address or unusual encoding. Be careful before proceeding.</string>
+    <string name="safety_shortener_title">Shortened link</string>
+    <string name="safety_shortener_desc">This link is shortened and masks its actual destination.</string>
+    <string name="safety_danger_blocked">Non-web executable scheme detected and blocked for safety.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_group_general">General</string>
+    <string name="settings_group_scan">Scan</string>
+    <string name="settings_group_create">Create</string>
+    <string name="settings_group_history">History</string>
+    <string name="settings_group_privacy">Privacy &amp; Security</string>
+    <string name="settings_group_about">About</string>
+
+    <string name="setting_theme">Theme</string>
+    <string name="setting_theme_system">System default</string>
+    <string name="setting_theme_light">Light</string>
+    <string name="setting_theme_dark">Dark</string>
+
+    <string name="setting_haptics">Haptic feedback</string>
+    <string name="setting_haptics_desc">Vibrate on successful scan and actions</string>
+    <string name="setting_beep">Sound beep</string>
+    <string name="setting_beep_desc">Play audio tone upon successful scan</string>
+    <string name="setting_speech">Speak scan result</string>
+    <string name="setting_speech_desc">Read out scanned content via text-to-speech</string>
+    <string name="setting_auto_open">Auto-open links</string>
+    <string name="setting_auto_open_desc">Automatically launch verified safe web links</string>
+    <string name="setting_auto_copy">Auto-copy to clipboard</string>
+    <string name="setting_auto_copy_desc">Copy scanned content to clipboard immediately</string>
+    <string name="setting_continuous_scan">Continuous scan</string>
+    <string name="setting_continuous_scan_desc">Rapidly scan multiple codes without interruption</string>
+    <string name="setting_save_scans">Save scans to history</string>
+    <string name="setting_save_creates">Save created codes to history</string>
+    <string name="setting_app_lock">App lock</string>
+    <string name="setting_app_lock_desc">Require biometric authentication or PIN to access</string>
+    <string name="setting_viewfinder">Viewfinder style</string>
+    <string name="setting_viewfinder_standard">Standard frame</string>
+    <string name="setting_viewfinder_large">Large viewfinder</string>
+    <string name="setting_viewfinder_fullscreen">Full-screen camera</string>
+
+    <string name="setting_retention">History retention</string>
+    <string name="setting_retention_forever">Keep forever</string>
+    <string name="setting_retention_30">30 days</string>
+    <string name="setting_retention_90">90 days</string>
+    <string name="setting_clear_history">Clear all history</string>
+    <string name="setting_export_csv">Export history (CSV)</string>
+    <string name="setting_export_json">Export history (JSON)</string>
+
+    <string name="setting_privacy_statement">Private by design</string>
+    <string name="setting_privacy_statement_desc">Salim operates 100% offline. No internet permission is requested. No accounts, ads, or tracking SDKs exist in this app.</string>
+    <string name="setting_version">Version</string>
+    <string name="setting_version_value">1.0.0</string>
+    <string name="setting_license">Open Source Licenses</string>
+</resources>

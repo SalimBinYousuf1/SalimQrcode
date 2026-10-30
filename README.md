@@ -1,11 +1,23 @@
-<div align="center">
+# Salim QR
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Salim is a native, offline-first Android application for scanning and generating QR codes and barcodes.
 
-  <h1>Built with AI Studio</h2>
+## Key Features
+- **100% Offline & Private:** Zero `INTERNET` permission. All processing, ML inference, decoding, generation, and storage remain strictly on-device.
+- **Fast Multiformat Scanning:** Powered by CameraX with bundled ML Kit Barcode Scanning and ZXing fallback decoders.
+- **Comprehensive Code Creator:** Generates codes for Websites, Plain Text, Email, SMS, Wi-Fi, Phone, vCard Contacts, Geolocation, Calendar Events, UPI Payments, and 1D Barcodes.
+- **Scannability Self-Check:** Built-in verification engine ensures generated codes have sufficient contrast and readability before sharing or printing.
+- **Glassmorphic Design:** Material 3 design system with custom Poppins typography, soft gradients, and floating tab navigation.
+- **History & Management:** SQLite Room persistence with instant search, filtering, and swipe-to-delete with undo.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Permissions
+- `android.permission.CAMERA`: Required strictly for live camera viewfinder scanning.
+- `android.permission.VIBRATE`: Provides haptic feedback upon successful scan.
+- `android.permission.USE_BIOMETRIC`: Optional app lock protection.
+- `android.permission.WRITE_EXTERNAL_STORAGE` (maxSdkVersion=28): Legacy support for saving generated images to device gallery. On modern Android versions (API 29+), MediaStore is used without requiring storage permissions.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+## Build Instructions
+```bash
+./gradlew assembleDebug
+./gradlew assembleRelease
+```

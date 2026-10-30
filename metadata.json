@@ -1,0 +1,6 @@
+{
+  "name": "Salim",
+  "description": "Salim QR & Barcode Scanner and Creator with history, offline privacy, and custom codes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

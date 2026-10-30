@@ -1,0 +1,13 @@
+Open Source Licenses Used in Salim QR
+
+1. Google Font: Poppins
+   SIL Open Font License, Version 1.1
+
+2. ZXing ("Zebra Crossing") Core
+   Apache License, Version 2.0
+
+3. Android Jetpack Libraries (CameraX, Compose, Room, DataStore)
+   Apache License, Version 2.0
+
+4. Google ML Kit Barcode Scanning
+   Apache License, Version 2.0
